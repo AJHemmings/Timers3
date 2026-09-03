@@ -31,7 +31,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 _addon.name     = 'Timers3'
 _addon.author   = 'Mak (fork of Gol-exe/Timers2)'
-_addon.version  = '1.1.0'
+_addon.version  = '1.2.0'
 _addon.commands = {'timers3', 'tm3'}
 
 -- Globals expected by themes and data layer
@@ -648,8 +648,8 @@ windower.register_event('addon command', function(command, ...)
 
     elseif command == 'interval' or command == 'i' then
         local interval = tonumber(args[1])
-        if not interval or interval <= 0 then
-            error('Usage: //tm3 interval <seconds>') ; return
+        if not interval or interval < 0 then
+            error('Usage: //tm3 interval <seconds>  (0 = update every frame, smoothest but more CPU)') ; return
         end
         settings.update_interval = interval ; config.save(settings)
         windower.add_to_chat(8, ('[Timers3] Update interval: %ss.'):format(interval))
@@ -892,7 +892,7 @@ windower.register_event('addon command', function(command, ...)
         windower.add_to_chat(8, '  filter delete / select / list / sort / category / whitelist')
         windower.add_to_chat(8, '  whitelist <abilities|spells> <add|remove> <name>')
         windower.add_to_chat(8, '  blacklist <add|remove> <buff name>')
-        windower.add_to_chat(8, '  interval <seconds>                 Refresh rate (default 0.5)')
+        windower.add_to_chat(8, '  interval <seconds>                 Refresh rate (default 0.5; 0 = every frame)')
 
     else
         windower.add_to_chat(8, ('[Timers3] Unknown command "%s". Type //tm3 help.'):format(command))

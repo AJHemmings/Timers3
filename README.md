@@ -130,7 +130,7 @@ All commands use `//timers3` or `//tm3`.
 | `direction <up\|down>` | `down` shows time remaining *(default)*; `up` shows time elapsed |
 | `recastdir / buffdir / customdir <asc\|desc>` | Per-column sort direction |
 | `recastlimit / bufflimit / customlimit <N>` | Cap rows per section (0 = no limit) |
-| `interval <seconds>` | Refresh rate (default: 0.5) |
+| `interval <seconds>` | Refresh rate — governs how smoothly the bar fill and countdown update (default: 0.5; try 0.1 or 0 for the smoothest look, at the cost of slightly more CPU) |
 | `tenths` | Toggle sub-second display when < 10s remaining |
 | `1hourname` | Toggle hiding the time counter for SP abilities |
 
